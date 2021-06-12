@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include <stdlib.h>
 #include <glad/glad.h>
@@ -11,18 +13,6 @@
     x;              \
     ASSERT(GLLog(#x, __FILE__, __LINE__))
 
-bool GLLog(const char *func, const char *file, int line)
-{
-    GLenum error = glGetError();
-    if (!error) {
-        std::cout << "[OpenGL ERORR]: (" << error << "): " << func << ":" << file << ":" << line << std::endl;
-        return false;
-    }
-    return true;
-}
+bool GLLog(const char *func, const char *file, int line);
 
-void GLClearError()
-{
-    while (glGetError() != GL_NO_ERROR)
-        ;
-}
+void GLClearError();

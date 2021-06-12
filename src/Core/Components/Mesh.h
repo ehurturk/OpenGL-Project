@@ -5,10 +5,12 @@
 #ifndef COPENGLTEST_MESH_H
 #define COPENGLTEST_MESH_H
 
-#include "Graphics/Buffers/VertexArray.h"
-#include "Graphics/Buffers/VertexBuffer.h"
-#include "Graphics/Buffers/VertexBufferLayout.h"
-#include "Graphics/Shader.h"
+#include "../Graphics/Buffers/VertexArray.h"
+#include "../Graphics/Buffers/VertexBuffer.h"
+#include "../Graphics/Buffers/VertexBufferLayout.h"
+#include "../Graphics/Shader.h"
+
+#include "Component.h"
 
 // Buffers:
 
@@ -29,8 +31,8 @@
      }
  */
 
-class Mesh {
-  public:
+class Mesh : public Component {
+public:
     static Mesh &createMeshFromVertices(float *data, unsigned int sizeOfData)
     {
         auto *vao = new VertexArray();
@@ -57,20 +59,23 @@ class Mesh {
     VertexArray &getGeometry() { return *vao; }
     int getVertexCount() const { return vertexCount; }
 
-    void update()
+    void update() override
     {
         shader.use();
         vao->bind();
     }
 
+    ComponentType& getComponentType() override { return componentType; }
+
     Mesh() = default;
 
-  private:
+private:
     VertexArray *vao;
     Shader shader;
     int vertexCount;
 
+    ComponentType componentType = ComponentType::Mesh;
     explicit Mesh(VertexArray *_vao, int vCount) : vao(_vao), vertexCount(vCount), shader() {}
 };
 
-#endif //COPENGLTEST_MESH_H
+#endif  //COPENGLTEST_MESH_H

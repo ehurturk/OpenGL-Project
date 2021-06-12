@@ -42,20 +42,29 @@ void Engine::start()
         0.0f, 0.5f, 0.0f};
 
     Shader shader;
-    shader.attach("/Users/emirhurturk/Dev/Projects/OpenGL/CPPOpenGL/res/shaders/cube.vs", "/Users/emirhurturk/Dev/Projects/OpenGL/CPPOpenGL/res/shaders/cube.fs");
+    shader.attach("../res/shaders/cube.vs", "../res/shaders/cube.fs");
 
     Mesh &mesh = Mesh::createMeshFromVertices(vertices, sizeof(vertices));
     mesh.setShader(shader);
 
-    createGameObject(mesh);
+    Transform t;
+
+    auto* go = createGameObject(mesh);
+    go->addComponent(t);
+
+    Component &comp = go->getComponent<ComponentType::Transform>();
+    std::cout << comp.getID() << std::endl;
 }
 
 void Engine::update()
 {
+    // updating logic.
     pollInputs();
     window->update();
     for (GameObject *go : gameObjects)
+    {
         go->update();
+    }
 }
 
 Engine::Engine()

@@ -28,8 +28,7 @@ public:
     inline glm::vec3& getRotation() { return rotation; }
     inline glm::vec3& getScale() { return scale; }
 
-    
-
+    ComponentType& getComponentType() override { return componentType; }
 
 private:
     glm::vec3 position;
@@ -37,4 +36,6 @@ private:
     glm::vec3 scale;
  
     glm::mat4 model;
+
+    ComponentType componentType = ComponentType::Transform;
 };

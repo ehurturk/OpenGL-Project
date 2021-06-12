@@ -11,8 +11,10 @@
 
 #include "IO/Window.h"
 #include "IO/Input.h"
+#include "Utils/Debug.h"
 #include "Graphics/Shader.h"
 #include "GameObject.h"
+#include "Components/Transform.h"
 
 #define LOG(x)     std::cout << x << std::endl;
 #define SCR_WIDTH  800
@@ -20,7 +22,7 @@
 
 class Engine {
 private:
-    static Engine *instance; // singleton
+    static Engine *instance;  // singleton
 
     std::unique_ptr<Window> window;
     std::vector<GameObject *> gameObjects;
@@ -29,7 +31,7 @@ private:
     GameObject *createGameObject(Mesh &mesh);
 
 public:
-    static Engine &getEngine(); // if instance is null, return new Engine.
+    static Engine &getEngine();  // if instance is null, return new Engine.
 
     Engine();
 
@@ -41,4 +43,4 @@ public:
     void update();
 };
 
-#endif //COPENGLTEST_Engine_H
+#endif  //COPENGLTEST_Engine_H

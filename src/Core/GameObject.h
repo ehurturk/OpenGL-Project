@@ -6,24 +6,27 @@
 #define COPENGLTEST_GAMEOBJECT_H
 
 #include <glad/glad.h>
-#include <vector>
-#include "Mesh.h"
-#include "Component.h"
+#include <unordered_map>
+#include "Components/Mesh.h"
+#include "Components/Component.h"
+
 
 class GameObject {
-  public:
+public:
     explicit GameObject(Mesh& mesh);
     GameObject();
 
     void update();
-    void setMesh(Mesh& mesh) { this->mesh = &mesh; }
+    void setMesh(Mesh& mesh) { component_map[ComponentType::Mesh] = &mesh;}
 
     void addComponent(Component& component);
-    // more things like unity's game object
 
-  private:
-    Mesh* mesh;
-    std::vector<Component*> components; // MIGHT BE REDUNDANT!!
+    template <ComponentType T>
+    Component& getComponent();
+
+
+private:
+    std::unordered_map<ComponentType, Component*> component_map;
 };
 
-#endif //COPENGLTEST_GAMEOBJECT_H
+#endif  //COPENGLTEST_GAMEOBJECT_H
