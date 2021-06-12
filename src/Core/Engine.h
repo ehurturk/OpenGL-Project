@@ -14,12 +14,12 @@
 #include "Graphics/Shader.h"
 #include "GameObject.h"
 
-#define LOG(x) std::cout << x << std::endl;
-#define SCR_WIDTH 800
+#define LOG(x)     std::cout << x << std::endl;
+#define SCR_WIDTH  800
 #define SCR_HEIGHT 600
 
 class Engine {
-  private:
+private:
     static Engine *instance; // singleton
 
     std::unique_ptr<Window> window;
@@ -28,7 +28,7 @@ class Engine {
 
     GameObject *createGameObject(Mesh &mesh);
 
-  public:
+public:
     static Engine &getEngine(); // if instance is null, return new Engine.
 
     Engine();

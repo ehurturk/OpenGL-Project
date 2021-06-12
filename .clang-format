@@ -1,5 +1,9 @@
-BasedOnStyle: LLVM
+BasedOnStyle: Google
 IndentWidth: 4
 SortIncludes: false
 ColumnLimit: 0
 BreakBeforeBraces: Stroustrup
+AccessModifierOffset: -4
+AlignConsecutiveAssignments: Consecutive
+AlignConsecutiveMacros: Consecutive
+AlignEscapedNewlines: Left
