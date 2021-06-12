@@ -13,7 +13,7 @@ void GameObject::update()
     for (const std::pair<ComponentType, Component*>& component : component_map) {
         component.second->update();
     }
-    glDrawArrays(GL_TRIANGLES, 0, ((Mesh*)component_map[ComponentType::Mesh])->getVertexCount()); // does this even work?
+    glDrawArrays(GL_TRIANGLES, 0, static_cast<Mesh*>(component_map[ComponentType::Mesh])->getVertexCount()); // does this even work?
 }
 
 void GameObject::addComponent(Component& component)
