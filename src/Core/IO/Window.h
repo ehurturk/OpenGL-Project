@@ -2,8 +2,8 @@
 // Created by Emir Hürtürk on 2.06.2021.
 //
 
-#ifndef OPENGL - PROJECT_WINDOW_H
-#define OPENGL -PROJECT_WINDOW_H
+#ifndef OPENGLPROJECT_WINDOW_H
+#define OPENGLPROJECT_WINDOW_H
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>

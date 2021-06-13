@@ -63,6 +63,7 @@ public:
     {
         shader.use();
         vao->bind();
+        glDrawArrays(GL_TRIANGLES, 0, vertexCount);
     }
 
     // ComponentType& getComponentType() override { return componentType; }

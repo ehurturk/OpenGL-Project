@@ -5,14 +5,15 @@ enum class ComponentType {
     Transform
 };
 
-class Component
-{
+class Component {
 public:
     virtual ~Component() {}
-    
+
     virtual void update() = 0;
+
     virtual const ComponentType& getComponentType() { return type; }
-    virtual const char* getID() { return id; } 
+    virtual const char* getID() { return id; }
+    virtual void registerParentGameObject() {}
 
 protected:
     const char* id;

@@ -4,7 +4,6 @@
 
 #include "Engine.h"
 
-
 Engine *Engine::instance = nullptr;
 Engine &Engine::getEngine()
 {
@@ -45,20 +44,15 @@ void Engine::start()
     Shader shader;
     shader.attach("../res/shaders/cube.vs", "../res/shaders/cube.fs");
 
-    Mesh* mesh = new Mesh(vertices, sizeof(vertices));
+    Mesh *mesh = new Mesh(vertices, sizeof(vertices));
     mesh->setShader(shader);
 
     Transform *transform = new Transform();
-
+    transform->translate(-1, 0.1, 0);
     auto *go = createGameObject();
     go->setMesh(*mesh);
     go->addComponent(*transform);
-    Component &t = go->getComponent<ComponentType::Transform>();
-    Component &m = go->getComponent<ComponentType::Mesh>();
-    Mesh meshh   = static_cast<Mesh &>(go->getComponent<ComponentType::Mesh>());
     // returns reference, so you must explicitly cast the result to a Mesh reference. (&)
-    std::cout << t.getID() << std::endl;
-    std::cout << m.getID() << std::endl;
 }
 
 void Engine::update()
@@ -66,8 +60,7 @@ void Engine::update()
     // updating logic.
     pollInputs();
     window->update();
-    for (GameObject *go : gameObjects)
-    {
+    for (GameObject *go : gameObjects) {
         go->update();
     }
 }

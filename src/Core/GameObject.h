@@ -11,6 +11,7 @@
 #include <memory>
 
 #include "Components/Mesh.h"
+#include "Components/Transform.h"
 #include "Components/Component.h"
 
 class GameObject {

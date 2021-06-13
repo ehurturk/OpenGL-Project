@@ -21,15 +21,17 @@ GameObject::~GameObject()
 
 void GameObject::update()
 {
-    for (auto& it: component_map) {
+    for (auto& it : component_map) {
         it.second->update();
     }
-    glDrawArrays(GL_TRIANGLES, 0, static_cast<Mesh*>(component_map[ComponentType::Mesh])->getVertexCount());
+    /* pass the model matrix to the mesh's shader */
+    // awkward
+    static_cast<Mesh*>(component_map[ComponentType::Mesh])->getShader().setMat4("model", static_cast<Transform*>(component_map[ComponentType::Transform])->getModelMatrix());
+
+    // glDrawArrays(GL_TRIANGLES, 0, static_cast<Mesh*>(component_map[ComponentType::Mesh])->getVertexCount());
 }
 
 void GameObject::addComponent(Component& component)
 {
     component_map[component.getComponentType()] = &component;
 }
-
-
