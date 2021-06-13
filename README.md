@@ -1,6 +1,6 @@
-# OpenGL Experimenting - Boilerplate Code for Starting OpenGL
+# OpenGL Experimenting - A Naive Attempt to Create a Very Simple 2D/3D Engine For Simple Games
 
-This repository is just a basic OpenGL experimentation repo, and is written with C++. As of now (June 2021), the project includes basic window and input handling.
+This repository is my attempt to create a very basic engine (which was initially aimed to create the very basic multiplayer game tank wars). Note that the code is nowhere near professional, and I don't suggest you to use this engine, as of now.
 
 ## Dependencies
 
@@ -30,7 +30,7 @@ If you have completed the Insatallation process successfully, all you need to do
 cd cmake-build-debug
 cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ..
 make
-./OPENGL-PROJECT
+./OpenGL-Project
 ```
 
 ## Contributing
