@@ -28,4 +28,17 @@
 #include "Core/IO/Input.h"
 #include "Core/Utils/Debug.h"
 
+// MACROS
+#define LOG_OUT(x) std::cout << x << std::endl;
+
+#ifdef _WIN64
+#ifdef ARES_EXPORT
+#define ARES_API __declspec(dllexport)
+#else
+#define ARES_API __declspec(dllimport)
+#endif
+#else
+#define ARES_API
+#endif
+
 #endif
