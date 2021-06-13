@@ -30,7 +30,7 @@ If you have completed the Insatallation process successfully, all you need to do
 cd cmake-build-debug
 cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ..
 make
-./COpenGLTest
+./OPENGL-PROJECT
 ```
 
 ## Contributing

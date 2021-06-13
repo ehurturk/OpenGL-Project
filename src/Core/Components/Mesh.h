@@ -2,8 +2,8 @@
 // Created by Emir Hürtürk on 5.06.2021.
 //
 
-#ifndef COPENGLTEST_MESH_H
-#define COPENGLTEST_MESH_H
+#ifndef OPENGLPROJECT_MESH_H
+#define OPENGLPROJECT_MESH_H
 
 #include "../Graphics/Buffers/VertexArray.h"
 #include "../Graphics/Buffers/VertexBuffer.h"
@@ -83,12 +83,16 @@ public:
         vbo.unbind();
         vao->unbind();
 
-        int vertexCount = size / layout.getStride();
-        this->vao       = vao;
+        int vertexCount   = size / layout.getStride();
+        this->vao         = vao;
         this->vertexCount = vertexCount;
     }
 
-    ~Mesh() override { delete vao; std::cout << "Freeing the mesh component.\n"; }
+    ~Mesh() override
+    {
+        delete vao;
+        std::cout << "Freeing the mesh component.\n";
+    }
 
 private:
     VertexArray *vao;
@@ -99,4 +103,4 @@ private:
     explicit Mesh(VertexArray *_vao, int vCount) : vao(_vao), vertexCount(vCount), shader() {}
 };
 
-#endif  //COPENGLTEST_MESH_H
+#endif  //OPENGL-PROJECT_MESH_H

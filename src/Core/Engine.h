@@ -2,8 +2,8 @@
 // Created by Emir Hürtürk on 2.06.2021.
 //
 
-#ifndef COPENGLTEST_Engine_H
-#define COPENGLTEST_Engine_H
+#ifndef OPENGLPROJECT_Engine_H
+#define OPENGLPROJECT_Engine_H
 
 #include <iostream>
 #include <memory>
@@ -43,4 +43,4 @@ public:
     void update();
 };
 
-#endif  //COPENGLTEST_Engine_H
+#endif  //OPENGL-PROJECT_Engine_H

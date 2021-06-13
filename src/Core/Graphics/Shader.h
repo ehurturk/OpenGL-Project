@@ -2,8 +2,8 @@
 // Created by Emir Hürtürk on 4.06.2021.
 //
 
-#ifndef COPENGLTEST_SHADER_H
-#define COPENGLTEST_SHADER_H
+#ifndef OPENGLPROJECT_SHADER_H
+#define OPENGLPROJECT_SHADER_H
 
 #include <string>
 #include <fstream>
@@ -12,9 +12,8 @@
 
 #include <glad/glad.h>
 
-class Shader
-{
-  public:
+class Shader {
+public:
     // Default constructor
     // ------------------------------------------------------------------------
     Shader() = default;
@@ -26,18 +25,17 @@ class Shader
     void use();
     // utility uniform functions
     // ------------------------------------------------------------------------
-    void setBool(const std::string &name, bool value) const;
+    void setBool(const std::string& name, bool value) const;
     // ------------------------------------------------------------------------
-    void setInt(const std::string &name, int value) const;
+    void setInt(const std::string& name, int value) const;
     // ------------------------------------------------------------------------
-    void setFloat(const std::string &name, float value) const;
+    void setFloat(const std::string& name, float value) const;
 
-  private:
+private:
     unsigned int ID;
     // utility function for checking shader compilation/linking errors.
     // ------------------------------------------------------------------------
     void checkCompileErrors(unsigned int shader, const std::string& type);
-
 };
 
-#endif //COPENGLTEST_SHADER_H
+#endif  //OPENGL-PROJECT_SHADER_H
