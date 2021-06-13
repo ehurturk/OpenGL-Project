@@ -3,15 +3,26 @@
 //
 
 #include "GameObject.h"
+#include <memory>
 #include "Components/Component.h"
 GameObject::GameObject(Mesh& mesh) { component_map[ComponentType::Mesh] = &mesh; }
 
 GameObject::GameObject() {}
 
+GameObject::~GameObject()
+{
+    // delete the component pointer of the map.
+    std::cout << "deleting\n";
+    for (auto& it : component_map) {
+        delete it.second;
+    }
+    component_map.clear();
+}
+
 void GameObject::update()
 {
-    for (const std::pair<ComponentType, Component*>& component : component_map) {
-        component.second->update();
+    for (auto& it: component_map) {
+        it.second->update();
     }
     glDrawArrays(GL_TRIANGLES, 0, static_cast<Mesh*>(component_map[ComponentType::Mesh])->getVertexCount()); // does this even work?
 }
@@ -19,12 +30,6 @@ void GameObject::update()
 void GameObject::addComponent(Component& component)
 {
     component_map[component.getComponentType()] = &component;
-}
-
-template <ComponentType T>
-Component& GameObject::getComponent()
-{
-    return *component_map[T];
 }
 
 

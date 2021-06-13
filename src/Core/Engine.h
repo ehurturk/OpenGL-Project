@@ -28,7 +28,7 @@ private:
     std::vector<GameObject *> gameObjects;
     void pollInputs();
 
-    GameObject *createGameObject(Mesh &mesh);
+    GameObject *createGameObject();
 
 public:
     static Engine &getEngine();  // if instance is null, return new Engine.

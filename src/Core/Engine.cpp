@@ -24,9 +24,9 @@ void Engine::pollInputs()
         window->setShouldWindowClose(1);
 }
 
-GameObject *Engine::createGameObject(Mesh &mesh)
+GameObject *Engine::createGameObject()
 {
-    auto *go = new GameObject(mesh);
+    auto *go = new GameObject();
     gameObjects.push_back(go);
     return go;
 }
@@ -44,16 +44,18 @@ void Engine::start()
     Shader shader;
     shader.attach("../res/shaders/cube.vs", "../res/shaders/cube.fs");
 
-    Mesh &mesh = Mesh::createMeshFromVertices(vertices, sizeof(vertices));
-    mesh.setShader(shader);
+    Mesh* mesh = new Mesh(vertices, sizeof(vertices));
+    mesh->setShader(shader);
 
-    Transform t;
+    Transform *transform = new Transform(); // free them
 
-    auto* go = createGameObject(mesh);
-    go->addComponent(t);
-
-    Component &comp = go->getComponent<ComponentType::Transform>();
-    std::cout << comp.getID() << std::endl;
+    auto *go = createGameObject();
+    go->setMesh(*mesh);
+    go->addComponent(*transform);
+    Component &t = go->getComponent<ComponentType::Transform>();
+    Component &m = go->getComponent<ComponentType::Mesh>();
+    std::cout << t.getID() << std::endl;
+    std::cout << m.getID() << std::endl;
 }
 
 void Engine::update()

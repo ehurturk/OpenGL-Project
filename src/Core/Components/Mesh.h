@@ -65,9 +65,30 @@ public:
         vao->bind();
     }
 
-    ComponentType& getComponentType() override { return componentType; }
+    // ComponentType& getComponentType() override { return componentType; }
 
-    Mesh() = default;
+    Mesh() { id = "Mesh"; }
+    Mesh(float *data, unsigned int size)
+    {
+        id        = "Mesh";
+        auto *vao = new VertexArray();
+        //VertexArray vao{}; // I guess it needs to be a pointer since the object is destroyed at the end of this function.
+        // TODO: 1) Don't declare the vao here, instead use the already declared VAO and then assign it. No need for a parameter to constructor.
+        VertexBuffer vbo(data, size);
+        VertexBufferLayout layout;
+
+        layout.push<float>(3, false);
+
+        vao->addBuffer(vbo, layout);
+        vbo.unbind();
+        vao->unbind();
+
+        int vertexCount = size / layout.getStride();
+        this->vao       = vao;
+        this->vertexCount = vertexCount;
+    }
+
+    ~Mesh() override { delete vao; }
 
 private:
     VertexArray *vao;
