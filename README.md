@@ -1,4 +1,4 @@
-# OpenGL Experimenting - A Naive Attempt to Create a Very Simple 2D/3D Engine For Simple Games
+# OpenGL Experimenting - An Attempt to Create a Very Simple 2D/3D Engine For Simple Games
 
 This repository is my attempt to create a very basic engine (which was initially aimed to create the very basic multiplayer game tank wars). Note that the code is nowhere near professional, and I don't suggest you to use this engine, as of now.
 
