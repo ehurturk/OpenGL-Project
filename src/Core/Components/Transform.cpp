@@ -11,7 +11,7 @@ Transform::Transform() : position(glm::vec3(0.0f, 0.0f, 0.0f)), rotation(glm::ve
     type = ComponentType::Transform;
 }
 
-Transform::~Transform() { }
+Transform::~Transform() { std::cout << "Freeing the transform component.\n"; }
 
 void Transform::update()
 {

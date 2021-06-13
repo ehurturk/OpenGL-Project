@@ -47,13 +47,15 @@ void Engine::start()
     Mesh* mesh = new Mesh(vertices, sizeof(vertices));
     mesh->setShader(shader);
 
-    Transform *transform = new Transform(); // free them
+    Transform *transform = new Transform();
 
     auto *go = createGameObject();
     go->setMesh(*mesh);
     go->addComponent(*transform);
     Component &t = go->getComponent<ComponentType::Transform>();
     Component &m = go->getComponent<ComponentType::Mesh>();
+    Mesh meshh   = static_cast<Mesh &>(go->getComponent<ComponentType::Mesh>());
+    // returns reference, so you must explicitly cast the result to a Mesh reference. (&)
     std::cout << t.getID() << std::endl;
     std::cout << m.getID() << std::endl;
 }

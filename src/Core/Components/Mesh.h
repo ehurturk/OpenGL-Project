@@ -88,7 +88,7 @@ public:
         this->vertexCount = vertexCount;
     }
 
-    ~Mesh() override { delete vao; }
+    ~Mesh() override { delete vao; std::cout << "Freeing the mesh component.\n"; }
 
 private:
     VertexArray *vao;

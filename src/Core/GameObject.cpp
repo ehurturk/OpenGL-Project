@@ -24,7 +24,7 @@ void GameObject::update()
     for (auto& it: component_map) {
         it.second->update();
     }
-    glDrawArrays(GL_TRIANGLES, 0, static_cast<Mesh*>(component_map[ComponentType::Mesh])->getVertexCount()); // does this even work?
+    glDrawArrays(GL_TRIANGLES, 0, static_cast<Mesh*>(component_map[ComponentType::Mesh])->getVertexCount());
 }
 
 void GameObject::addComponent(Component& component)
